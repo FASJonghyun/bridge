@@ -1,17 +1,28 @@
 import BridgePage from "./bridge_page/BridgePage";
-// import { makeMetadata } from "./utils/meta_data";
+import { makeMetadata } from "./utils/meta_data";
 
-// export async function generateMetadata() {
+export async function generateMetadata({searchParams}) {
 
-//   return makeMetadata(
-//     "브릿지메타데이터",
-//     "패션앤스타일(Fashion & Style)이 제공하는 최신 트렌드 패션 아이템과 다양한 셀럽들의 스타일을 만나보세요.",
-//     "https://www.fashionandstyle.com/withdraw",
-//   );
-// };
+  // console.log("SEARCH PARAMS > generateMetadata");
+  // console.log(searchParams);
+  // console.log('');
 
 
-export default function Home() {
+  // console.log(searchParams.title);
+  // console.log(searchParams.desc);
+  // console.log(searchParams.page);
+
+  return makeMetadata(
+    searchParams.title,
+    searchParams.desc,
+    searchParams.page,
+  );
+};
+
+
+export default function Home({searchParams}) {
+  console.log('THIS IS SEARCH PARAM');
+  console.log(searchParams);
   return (
     <div id="Home">
       <BridgePage/>

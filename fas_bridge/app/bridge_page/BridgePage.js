@@ -1,8 +1,7 @@
-"use client"; // 클라이언트 컴포넌트 설정
+"use client"; 
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Head from "next/head"; // next/head 사용
 
 function BridgePage() {
   const [showModal, setShowModal] = useState(false);
@@ -77,16 +76,6 @@ function BridgePage() {
 
   return (
     <>
-      <Head>
-        <title>패션&스타일2</title>
-        <meta name="description" content="패션&스타일2" />
-        <meta property="og:title" content="패션&스타일2" />
-        <meta property="og:description" content="패션&스타일2" />
-        <meta property="og:url" content="https://www.fashionandstyle.com" />
-        <meta property="og:image" content="https://d1yzfoqf37d0dc.cloudfront.net/media/admin/post_images/2024/09/24/5c4d9419-b55e-42c8-8dcf-212a5187b163_20240924124908.jpg" />
-        <meta property="og:type" content="website" />
-        <meta name="robots" content="index, follow" />
-      </Head>
       <div>
         <h1> 브릿지 페이지 입니다.</h1>
         <p>잠시 후 앱으로 이동합니다. 이동되지 않으면 앱 스토어에서 설치해주세요.</p>
