@@ -1,12 +1,12 @@
-"use client"; // 이 지시어를 맨 위에 추가하여 클라이언트 컴포넌트로 선언
+"use client";
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 import BridgePage from "./bridge_page/BridgePage";
 
 export default function Home() {
-  const router = useRouter();
-  const { id } = router.query;
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
 
   useEffect(() => {
     if (id) {
