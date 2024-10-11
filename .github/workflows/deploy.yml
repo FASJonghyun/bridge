@@ -1,9 +1,9 @@
-name: Deploy React App to GitHub Pages
+name: Deploy Next.js App to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # main 브랜치로 푸시될 때마다 실행
 
 jobs:
   build-and-deploy:
@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4 
+      uses: actions/checkout@v4  # 최신 버전 사용
 
     - name: Setup Node.js
-      uses: actions/setup-node@v3 
+      uses: actions/setup-node@v3
       with:
         node-version: '20'  # Node.js 20 사용
 
@@ -23,13 +23,13 @@ jobs:
       working-directory: ./fas_bridge  # 프로젝트 디렉토리에서 작업 수행
 
     - name: Build project
-      run: npm run build
+      run: npm run build && npm run export  # Next.js를 정적 파일로 빌드
       working-directory: ./fas_bridge  # 프로젝트 디렉토리에서 빌드 수행
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4  # 최신 버전 사용
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./fas_bridge/build  # 빌드 결과물 경로 설정
+        publish_dir: ./fas_bridge/out  # Next.js에서 빌드된 정적 파일이 저장되는 디렉토리
         publish_branch: gh-pages  # 배포할 브랜치를 설정
-        force_orphan: true
+        force_orphan: true  # 강제로 새로운 커밋 트리를 생성 (필요한 경우)
