@@ -15,7 +15,11 @@ export async function generateMetadata({params}) {
 };
 
 
-export default function Home() {
+export default function Home({params}) {
+  const { id } = params;
+  console.log('#### CHECKING PARAM ON Client');
+  console.log(id);
+  console.log('');
   return (
     <div id="Home">
       <BridgePage/>
