@@ -6,11 +6,13 @@ export async function generateMetadata({searchParams}) {
   console.log(searchParams.title);
   console.log(searchParams.desc);
   console.log(searchParams.page);
+  console.log(searchParams.image);
 
   return makeMetadata(
     searchParams.title,
     searchParams.desc,
     searchParams.page,
+    searchParams.image,
   );
 };
 
