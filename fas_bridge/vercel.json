@@ -1,11 +1,14 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }],
+    "version": 2,
     "builds": [
-        {
-            "src": "fas_bridge/package.json",
-            "use": "@vercel/node"
-        }
+      {
+        "src": "fas_bridge/package.json",
+        "use": "@vercel/next"
+      }
     ],
-    "outputDirectory": "fas_bridge/.next"
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/(.*)", "dest": "/fas_bridge/$1" }
+    ]
   }
   
