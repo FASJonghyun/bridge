@@ -1,18 +1,19 @@
+"use client"; // 이 지시어를 추가하여 클라이언트 컴포넌트로 설정
+
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"; // next/router 대신 next/navigation 사용
 import Head from "next/head";
 
 function BridgePage() {
   const [showModal, setShowModal] = useState(false);
-  const router = useRouter(); // Next.js 라우터 사용
+  const router = useRouter(); // next/navigation의 useRouter 사용
 
   useEffect(() => {
-    document.title = "패션&스타일"; // Next.js에선 Head로 관리 가능
+    document.title = "패션&스타일";
     handlePageLoad();
   }, []);
 
   useEffect(() => {
-    // 프리렌더링 중인지 감지 (Next.js는 빌드 시 정적 사이트를 만들기 때문에 따로 체크는 필요 없음)
     if (typeof window !== "undefined" && !window.__PRERENDER_INJECTED) {
       handlePageLoad();
     }
@@ -21,7 +22,6 @@ function BridgePage() {
   const handlePageLoad = () => {
     const userAgent = navigator.userAgent.toLowerCase();
     const targetUrl = window.location.href;
-
     const inAppBrowserPattern = /kakaotalk|line|inapp|naver|snapchat|wirtschaftswoche|thunderbird|instagram|everytimeapp|whatsapp|electron|wadiz|aliapp|zumapp|whale|kakaostory|band|twitter|daumapps|daumdevice\/mobile|fb_iab|fb4a|fban|fbios|fbss|trill|samsungbrowser\/[^1]/i;
 
     const externalUrl = 'https://www.fashionandstyle.com';
