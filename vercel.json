@@ -1,9 +1,4 @@
 {
-  "rewrites": [
-      {
-          "source": "/(.*)"
-      }
-  ],
   "builds": [
       {
           "src": "fas_bridge/package.json",
