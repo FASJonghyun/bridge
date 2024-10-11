@@ -6,6 +6,6 @@
             "use": "@vercel/node"
         }
     ],
-    "outputDirectory": "/.next"
+    "outputDirectory": "fas_bridge/.next"
   }
   
