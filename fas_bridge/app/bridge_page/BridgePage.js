@@ -3,9 +3,15 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-function BridgePage() {
+function BridgePage({type,id}) {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
+
+  console.log('###############');
+  console.log(type);
+  console.log(id);
+  console.log('###############');
+
 
 
   useEffect(() => {
@@ -18,22 +24,69 @@ function BridgePage() {
     }
   }, [router]);
 
+  // const handlePageLoad = () => {
+  //   const userAgent = navigator.userAgent.toLowerCase();
+  //   const targetUrl = window.location.href;
+  //   const inAppBrowserPattern = /kakaotalk|line|inapp|naver|snapchat|wirtschaftswoche|thunderbird|instagram|everytimeapp|whatsapp|electron|wadiz|aliapp|zumapp|whale|kakaostory|band|twitter|daumapps|daumdevice\/mobile|fb_iab|fb4a|fban|fbios|fbss|trill|samsungbrowser\/[^1]/i;
+
+  //   const externalUrl = 'https://www.fashionandstyle.com';
+
+  //   if (userAgent.match(/kakaotalk/i)) {
+  //     window.location.href = 'fashionandstyle://' + externalUrl.replace(/^https?:\/\//i, '');
+  //   } else if (userAgent.match(/line/i)) {
+  //     window.location.href = 'fashionandstyle://' + externalUrl.replace(/^https?:\/\//i, '');
+  //   } else if (document.referrer.includes('instagram.com')) {
+  //     if (/android/i.test(userAgent)) {
+  //       window.location.href = 'intent://' + externalUrl.replace(/^https?:\/\//i, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+  //     } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+  //       window.location.href = 'fashionandstyle://' + externalUrl.replace(/^https?:\/\//i, '');
+  //     } else {
+  //       window.location.href = externalUrl;
+  //     }
+  //     setTimeout(() => {
+  //       setShowModal(true);
+  //       window.location.replace(externalUrl);
+  //     }, 2000);
+  //   } else if (userAgent.match(inAppBrowserPattern)) {
+  //     if (/iphone|ipad|ipod/i.test(userAgent)) {
+  //       window.location.href = 'https://www.fashionandstyle.com/';
+  //       setTimeout(() => {
+  //         setShowModal(true);
+  //         window.location.replace("https://www.fashionandstyle.com");
+  //       }, 2000);
+  //     } else {
+  //       window.location.href = 'intent://' + targetUrl.replace(/https?:\/\//i, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+  //     }
+  //   } else if (/android/i.test(userAgent)) {
+  //     window.location.href = 'https://www.fashionandstyle.com/';
+  //     setTimeout(() => {
+  //       setShowModal(true);
+  //     }, 2000);
+  //   } else if (/iphone|ipad|ipod/.test(userAgent) && !window.MSStream) {
+  //     window.location.href = 'https://www.fashionandstyle.com/';
+  //     setTimeout(() => {
+  //       setShowModal(true);
+  //     }, 2000);
+  //   }
+  // };
+
   const handlePageLoad = () => {
     const userAgent = navigator.userAgent.toLowerCase();
     const targetUrl = window.location.href;
     const inAppBrowserPattern = /kakaotalk|line|inapp|naver|snapchat|wirtschaftswoche|thunderbird|instagram|everytimeapp|whatsapp|electron|wadiz|aliapp|zumapp|whale|kakaostory|band|twitter|daumapps|daumdevice\/mobile|fb_iab|fb4a|fban|fbios|fbss|trill|samsungbrowser\/[^1]/i;
 
     const externalUrl = 'https://www.fashionandstyle.com';
+    const appScheme = `fashionandstyle://open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
 
     if (userAgent.match(/kakaotalk/i)) {
-      window.location.href = 'fashionandstyle://' + externalUrl.replace(/^https?:\/\//i, '');
+      window.location.href = appScheme;
     } else if (userAgent.match(/line/i)) {
-      window.location.href = 'fashionandstyle://' + externalUrl.replace(/^https?:\/\//i, '');
+      window.location.href = appScheme;
     } else if (document.referrer.includes('instagram.com')) {
       if (/android/i.test(userAgent)) {
-        window.location.href = 'intent://' + externalUrl.replace(/^https?:\/\//i, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+        window.location.href = `intent://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
       } else if (/iphone|ipad|ipod/i.test(userAgent)) {
-        window.location.href = 'fashionandstyle://' + externalUrl.replace(/^https?:\/\//i, '');
+        window.location.href = appScheme;
       } else {
         window.location.href = externalUrl;
       }
@@ -43,21 +96,21 @@ function BridgePage() {
       }, 2000);
     } else if (userAgent.match(inAppBrowserPattern)) {
       if (/iphone|ipad|ipod/i.test(userAgent)) {
-        window.location.href = 'https://www.fashionandstyle.com/';
+        window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
         setTimeout(() => {
           setShowModal(true);
-          window.location.replace("https://www.fashionandstyle.com");
+          window.location.replace(externalUrl);
         }, 2000);
       } else {
-        window.location.href = 'intent://' + targetUrl.replace(/https?:\/\//i, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+        window.location.href = `intent://${targetUrl.replace(/https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
       }
     } else if (/android/i.test(userAgent)) {
-      window.location.href = 'https://www.fashionandstyle.com/';
+      window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
       setTimeout(() => {
         setShowModal(true);
       }, 2000);
     } else if (/iphone|ipad|ipod/.test(userAgent) && !window.MSStream) {
-      window.location.href = 'https://www.fashionandstyle.com/';
+      window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
       setTimeout(() => {
         setShowModal(true);
       }, 2000);

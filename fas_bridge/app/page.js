@@ -20,9 +20,16 @@ export async function generateMetadata({searchParams}) {
 export default function Home({searchParams}) {
   console.log('THIS IS SEARCH PARAM');
   console.log(searchParams);
+  console.log('######');
+  console.log(searchParams.title);
+  console.log(searchParams.desc);
+  console.log(searchParams.page);
+  console.log(searchParams.image);
+  console.log('######');
+
   return (
     <div id="Home">
-      <BridgePage/>
+      <BridgePage type={searchParams.type} id={searchParams.id}/>
     </div>
   );
 }
