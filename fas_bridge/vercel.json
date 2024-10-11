@@ -1,3 +1,9 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
-  }
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/fas_bridge/$1"
+      }
+    ]
+}
+  
