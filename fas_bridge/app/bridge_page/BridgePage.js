@@ -1,3 +1,10 @@
+
+"use client"; // 클라이언트 컴포넌트 설정
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation"; 
+
+
 export const metadata = {
     title: '패션&스타일2',
     description: '패션&스타일2',
@@ -20,12 +27,6 @@ export const metadata = {
       follow: true,
     },
   };
-  
-  "use client"; // 클라이언트 컴포넌트 설정
-  
-  import { useEffect, useState } from "react";
-  import { useRouter } from "next/navigation"; 
-  
   function BridgePage() {
     const [showModal, setShowModal] = useState(false);
     const router = useRouter();
