@@ -1,11 +1,8 @@
 import BridgePage from "./bridge_page/BridgePage";
 import { makeMetadata } from "./utils/meta_data";
+// import { useSearchParams } from "next/navigation";
 
-export async function generateMetadata({params}) {
-
-  const { id } = params;
-  console.log('##### CHECK PARAMS');
-  console.log(id);
+export async function generateMetadata() {
 
   return makeMetadata(
     "브릿지메타데이터",
@@ -15,11 +12,10 @@ export async function generateMetadata({params}) {
 };
 
 
-export default function Home({params}) {
-  const { id } = params;
-  console.log('#### CHECKING PARAM ON Client');
-  console.log(id);
+export default function Home() {
+
   console.log('');
+  console.log('!!!!');
   return (
     <div id="Home">
       <BridgePage/>

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from 'next/navigation';
 import Head from "next/head"; // next/head 사용
 
 function BridgePage() {
@@ -10,8 +9,6 @@ function BridgePage() {
   const router = useRouter();
 
 
-  const searchParams = useSearchParams();
-  const id = searchParams.get('id');
 
   useEffect(() => {
     handlePageLoad();
@@ -92,7 +89,7 @@ function BridgePage() {
         <meta name="robots" content="index, follow" />
       </Head>
       <div>
-        <h1> 00{id}00  브릿지 페이지 입니다.</h1>
+        <h1> 브릿지 페이지 입니다.</h1>
         <p>잠시 후 앱으로 이동합니다. 이동되지 않으면 앱 스토어에서 설치해주세요.</p>
         {showModal && (
           <div className="modal">
