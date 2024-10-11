@@ -9,7 +9,6 @@ function BridgePage() {
   const router = useRouter();
 
 
-
   useEffect(() => {
     handlePageLoad();
   }, []);
