@@ -5,7 +5,6 @@ export async function generateMetadata({searchParams}) {
 
   console.log(searchParams.title);
   console.log(searchParams.desc);
-  console.log(searchParams.page);
 
   return makeMetadata(
     searchParams.title,
