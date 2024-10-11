@@ -143,7 +143,7 @@ function BridgePage({type,id}) {
     } 
     else if (document.referrer.includes('instagram.com')) {
       if (/android/i.test(userAgent)) {
-        window.location.href = `intent://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
+        window.location.href = `fashionandstyle://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
       } else if (/iphone|ipad|ipod/i.test(userAgent)) {
         window.location.href = appScheme;
       } else {
@@ -162,7 +162,7 @@ function BridgePage({type,id}) {
           window.location.replace(externalUrl);
         }, 2000);
       } else {
-        window.location.href = `intent://${targetUrl.replace(/https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
+        window.location.href = `fashionandstyle://${targetUrl.replace(/https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
       }
     } 
     else if (/android/i.test(userAgent)) {
