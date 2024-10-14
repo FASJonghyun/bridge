@@ -404,11 +404,6 @@ function BridgePage({type,id}) {
             <h2>패션 & 스타일</h2>
           </div>
         </div>
-        {/* `<div>
-          <a id="moveToAPP" href="https://www.fashionandstyle.com/">앱에서 열기</a>
-          <p>또는</p>
-          <a href="https://apps.apple.com/app/id1620312420">앱스토어에서 설치</a>
-        </div>` */}
         <div id="moveToApp">
           <button className="appViewButton" onClick={handleStoreRedirect}>앱으로보기</button>
         </div>
