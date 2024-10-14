@@ -165,8 +165,6 @@ function BridgePage({type,id}) {
 
     if (userAgent.match(/kakaotalk/i)) {
       window.location.href = appScheme;
-    } else if (userAgent.match(/line/i)) {
-      window.location.href = appScheme;
     } 
     // 페이스북 인앱 브라우저 처리 추가
     else if (isFacebookInAppBrowser) {
@@ -202,59 +200,76 @@ function BridgePage({type,id}) {
       }, 2000);
     } 
     else if (userAgent.match(inAppBrowserPattern)) {
-      if (/iphone|ipad|ipod/i.test(userAgent)) {
-        window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
-        setTimeout(() => {
-          setShowModal(true);
-          // window.location.replace(externalUrl);
-          if (/android/i.test(userAgent)) {
-            window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
-          } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-            window.location.replace("https://apps.apple.com/app/id1620312420");
-          }
-        }, 2000);
+      // if (/iphone|ipad|ipod/i.test(userAgent)) {
+      //   window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
+      //   setTimeout(() => {
+      //     setShowModal(true);
+      //     // window.location.replace(externalUrl);
+      //     // if (/android/i.test(userAgent)) {
+      //     //   window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+      //     // } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+      //     //   window.location.replace("https://apps.apple.com/app/id1620312420");
+      //     // }
+      //   }, 2000);
+      // } else {
+      //   window.location.href = `fashionandstyle://${targetUrl.replace(/https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
+      //   setTimeout(() => {
+      //     setShowModal(true);
+      //     // window.location.replace(externalUrl);
+      //     // if (/android/i.test(userAgent)) {
+      //     //   window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+      //     // } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+      //     //   window.location.replace("https://apps.apple.com/app/id1620312420");
+      //     // }
+      //   }, 2000);
+      // }
+      if (/android/i.test(userAgent)) {
+        window.location.href = `fashionandstyle://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
+      } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+        window.location.href = appScheme;
       } else {
-        window.location.href = `fashionandstyle://${targetUrl.replace(/https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
-        setTimeout(() => {
-          setShowModal(true);
-          // window.location.replace(externalUrl);
-          if (/android/i.test(userAgent)) {
-            window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
-          } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-            window.location.replace("https://apps.apple.com/app/id1620312420");
-          }
-        }, 2000);
+        window.location.href = externalUrl;
       }
+      setTimeout(() => {
+        setShowModal(true);
+        // if (/android/i.test(userAgent)) {
+        //   window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        // } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+        //   // window.location.replace("https://apps.apple.com/app/id1620312420");
+        //   window.location.replace(`https://apps.apple.com/app/id1620312420/?type=${type}&id=${id}`);
+        // }
+        // timeOutMethod();
+      }, 2000);
     } 
     else if (/android/i.test(userAgent)) {
       window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
       setTimeout(() => {
         setShowModal(true);
-        setTimeout(() => {
-          setShowModal(true);
-          // window.location.replace(externalUrl);
-          if (/android/i.test(userAgent)) {
-            window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
-          } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-            window.location.replace("https://apps.apple.com/app/id1620312420");
-          }
-        }, 2000);
+        // setTimeout(() => {
+        //   setShowModal(true);
+        //   // window.location.replace(externalUrl);
+        //   if (/android/i.test(userAgent)) {
+        //     window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        //   } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+        //     window.location.replace("https://apps.apple.com/app/id1620312420");
+        //   }
+        // }, 2000);
       }, 2000);
     } 
     else if (/iphone|ipad|ipod/.test(userAgent) && !window.MSStream) {
       window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
       setTimeout(() => {
         setShowModal(true);
-        setTimeout(() => {
-          setShowModal(true);
-          // window.location.replace(externalUrl);
-          if (/android/i.test(userAgent)) {
-            window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
-          } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-            // window.location.href = "https://apps.apple.com/app/id1620312420";
-            window.location.replace("https://apps.apple.com/app/id1620312420");
-          }
-        }, 2000);
+        // setTimeout(() => {
+        //   setShowModal(true);
+        //   // window.location.replace(externalUrl);
+        //   if (/android/i.test(userAgent)) {
+        //     window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        //   } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+        //     // window.location.href = "https://apps.apple.com/app/id1620312420";
+        //     window.location.replace("https://apps.apple.com/app/id1620312420");
+        //   }
+        // }, 2000);
       }, 2000);
     }
   };
