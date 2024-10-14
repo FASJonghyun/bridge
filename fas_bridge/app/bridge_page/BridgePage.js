@@ -7,12 +7,6 @@ function BridgePage({type,id}) {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
-  console.log('###############');
-  console.log(type);
-  console.log(id);
-  console.log('###############');
-
-
 
   useEffect(() => {
     handlePageLoad();
@@ -23,6 +17,47 @@ function BridgePage({type,id}) {
       handlePageLoad();
     }
   }, [router]);
+
+  const timeOutMethod = () => {
+    const clipboardText = "This is the string you want to save to clipboard";
+  
+    // 클립보드 API를 사용해 복사
+    if (navigator.clipboard && window.isSecureContext) {
+      // 비동기적으로 클립보드에 텍스트를 저장
+      navigator.clipboard.writeText(clipboardText).then(() => {
+        console.log('클립보드에 문자열이 저장되었습니다.');
+      }).catch((err) => {
+        console.error('클립보드에 접근할 수 없습니다: ', err);
+      });
+    } else {
+      // Clipboard API가 지원되지 않는 경우 (구형 브라우저)
+      const textArea = document.createElement("textarea");
+      textArea.value = clipboardText;
+      // 보이지 않게 하고, DOM에 추가
+      textArea.style.position = "fixed";
+      textArea.style.opacity = 0;
+      document.body.appendChild(textArea);
+      // 텍스트 선택 및 복사
+      textArea.focus();
+      textArea.select();
+      try {
+        const successful = document.execCommand('copy');
+        const msg = successful ? '클립보드에 문자열이 저장되었습니다.' : '클립보드 복사에 실패했습니다.';
+        console.log(msg);
+      } catch (err) {
+        console.error('클립보드 복사 중 오류 발생: ', err);
+      }
+      // 텍스트 영역 삭제
+      document.body.removeChild(textArea);
+    }
+  
+    // 앱스토어로 이동
+    if (/android/i.test(navigator.userAgent)) {
+      window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+    } else if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream) {
+      window.location.replace("https://apps.apple.com/app/id1620312420");
+    }
+  };
 
   // const handlePageLoad = () => {
   //   const userAgent = navigator.userAgent.toLowerCase();
@@ -157,15 +192,12 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
-        // window.location.replace("https://apps.apple.com/app/id1620312420");
-        if (/android/i.test(userAgent)) {
-          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
-        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-          // window.location.href = "https://apps.apple.com/app/id1620312420";
-          // window.location.replace(`https://apps.apple.com/app/id1620312420?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`);
-          alert(`type : ${type} , id : ${id}`);
-          window.location.replace("https://apps.apple.com/app/id1620312420");
-        }
+        // if (/android/i.test(userAgent)) {
+        //   window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        // } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+        //   window.location.replace("https://apps.apple.com/app/id1620312420");
+        // }
+        timeOutMethod();
       }, 2000);
     } 
     else if (userAgent.match(inAppBrowserPattern)) {
