@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import '../css/BridgePageCss.css';
+
 
 function BridgePage({type,id}) {
   const [showModal, setShowModal] = useState(false);
@@ -381,26 +383,34 @@ function BridgePage({type,id}) {
     }
   };
 
+  // {showModal && (
+  //   <div className="modal">
+  //     <div className="modal-content">
+  //       <h2>앱 열기 실패</h2>
+  //       <p>앱을 여는 데 실패했습니다. 앱스토어로 이동하여 앱을 설치하거나 다시 시도하세요.</p>
+  //       <button onClick={handleStoreRedirect}>앱스토어로 이동</button>
+  //       <button onClick={handlePageLoad}>다시 시도</button>
+  //     </div>
+  //   </div>
+  // )}
+
 
   return (
     <>
-      <div>
-        <h1> 브릿지 페이지 입니다.</h1>
-        <p>잠시 후 앱으로 이동합니다. 이동되지 않으면 앱 스토어에서 설치해주세요.</p>
-        {showModal && (
-          <div className="modal">
-            <div className="modal-content">
-              <h2>앱 열기 실패</h2>
-              <p>앱을 여는 데 실패했습니다. 앱스토어로 이동하여 앱을 설치하거나 다시 시도하세요.</p>
-              <button onClick={handleStoreRedirect}>앱스토어로 이동</button>
-              <button onClick={handlePageLoad}>다시 시도</button>
-            </div>
-          </div>
-        )}
+      <div id="BridgePage">
         <div>
+          <div id="appLogoDiv">
+            <img src="/img/app_logo.svg" alt="패션&스타일 로고" id="logo"/>
+          </div>
+          <h1>패션 & 스타일</h1>
+        </div>
+        {/* `<div>
           <a id="moveToAPP" href="https://www.fashionandstyle.com/">앱에서 열기</a>
           <p>또는</p>
           <a href="https://apps.apple.com/app/id1620312420">앱스토어에서 설치</a>
+        </div>` */}
+        <div id="moveToApp">
+          <button className="appViewButton" onClick={handleStoreRedirect}>앱으로보기</button>
         </div>
       </div>
     </>
