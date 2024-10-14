@@ -162,7 +162,7 @@ function BridgePage({type,id}) {
           window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
         } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
           // window.location.href = "https://apps.apple.com/app/id1620312420";
-          window.location.replace("https://apps.apple.com/app/id1620312420");
+          window.location.replace(`https://apps.apple.com/app/id1620312420?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`);
         }
       }, 2000);
     } 
