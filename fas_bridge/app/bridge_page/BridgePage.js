@@ -271,7 +271,7 @@ function BridgePage({type,id}) {
 
   const handleStoreRedirect = async () => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const dataToCopy = `${type},$${id}`; // 클립보드에 저장할 데이터
+    const dataToCopy = `${type},${id}`; // 클립보드에 저장할 데이터
 
     try {
       // 클립보드에 데이터 저장
