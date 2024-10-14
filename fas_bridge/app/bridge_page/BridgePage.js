@@ -192,12 +192,13 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
-        // if (/android/i.test(userAgent)) {
-        //   window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
-        // } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-        //   window.location.replace("https://apps.apple.com/app/id1620312420");
-        // }
-        timeOutMethod();
+        if (/android/i.test(userAgent)) {
+          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+          // window.location.replace("https://apps.apple.com/app/id1620312420");
+          window.location.replace(`https://apps.apple.com/app/id1620312420/?type=${type}&id=${id}`);
+        }
+        // timeOutMethod();
       }, 2000);
     } 
     else if (userAgent.match(inAppBrowserPattern)) {
@@ -209,7 +210,6 @@ function BridgePage({type,id}) {
           if (/android/i.test(userAgent)) {
             window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
           } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-            // window.location.href = "https://apps.apple.com/app/id1620312420";
             window.location.replace("https://apps.apple.com/app/id1620312420");
           }
         }, 2000);
@@ -221,7 +221,6 @@ function BridgePage({type,id}) {
           if (/android/i.test(userAgent)) {
             window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
           } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-            // window.location.href = "https://apps.apple.com/app/id1620312420";
             window.location.replace("https://apps.apple.com/app/id1620312420");
           }
         }, 2000);
@@ -237,7 +236,6 @@ function BridgePage({type,id}) {
           if (/android/i.test(userAgent)) {
             window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
           } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-            // window.location.href = "https://apps.apple.com/app/id1620312420";
             window.location.replace("https://apps.apple.com/app/id1620312420");
           }
         }, 2000);
