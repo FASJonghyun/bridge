@@ -400,7 +400,7 @@ function BridgePage({type,id}) {
       <div id="BridgePage">
         <div>
           <div id="appLogoDiv">
-            <img src="/img/app_logo.svg" alt="패션&스타일 로고" id="logo"/>
+            <img src="/img/fas_logo.svg" alt="패션&스타일 로고" id="logo"/>
           </div>
           <h1>패션 & 스타일</h1>
         </div>
