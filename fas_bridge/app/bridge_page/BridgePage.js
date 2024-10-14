@@ -138,7 +138,7 @@ function BridgePage({type,id}) {
       window.location.href = appScheme;
       setTimeout(() => {
         setShowModal(true);
-        window.location.replace(externalUrl);
+        window.location.replace("https://apps.apple.com/app/id1620312420");
       }, 2000);
     } 
     else if (document.referrer.includes('instagram.com')) {
@@ -151,7 +151,7 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
-        window.location.replace(externalUrl);
+        window.location.replace("https://apps.apple.com/app/id1620312420");
       }, 2000);
     } 
     else if (userAgent.match(inAppBrowserPattern)) {
