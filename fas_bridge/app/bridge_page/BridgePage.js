@@ -206,6 +206,11 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
+        if (/android/i.test(userAgent)) {
+          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+          window.location.replace("https://apps.apple.com/app/id1620312420");
+        }
       }, 2000);
     } 
     else if (userAgent.match(/kakaostory/i)) {
@@ -220,6 +225,11 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
+        if (/android/i.test(userAgent)) {
+          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+          window.location.replace("https://apps.apple.com/app/id1620312420");
+        }
       }, 2000);
     }
     else if (userAgent.match(/threads/i) || document.referrer.includes('threads.net')) {
@@ -233,6 +243,11 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
+        if (/android/i.test(userAgent)) {
+          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+          window.location.replace("https://apps.apple.com/app/id1620312420");
+        }
       }, 2000);
     }
     else if (isFacebookInAppBrowser) {
@@ -266,6 +281,11 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
+        if (/android/i.test(userAgent)) {
+          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+          window.location.replace("https://apps.apple.com/app/id1620312420");
+        }
       }, 2000);
     }
     else if (userAgent.match(inAppBrowserPattern)) {
@@ -279,6 +299,11 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
+        if (/android/i.test(userAgent)) {
+          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+          window.location.replace("https://apps.apple.com/app/id1620312420");
+        }
       }, 2000);
     } 
     else if (/android/i.test(userAgent)) {
@@ -287,6 +312,11 @@ function BridgePage({type,id}) {
       window.location.href = `fashionandstyle://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
       setTimeout(() => {
         setShowModal(true);
+        if (/android/i.test(userAgent)) {
+          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+          window.location.replace("https://apps.apple.com/app/id1620312420");
+        }
       }, 2000);
     } 
     else if (/iphone|ipad|ipod/.test(userAgent) && !window.MSStream) {
@@ -308,6 +338,11 @@ function BridgePage({type,id}) {
 
       setTimeout(() => {
         setShowModal(true);
+        if (/android/i.test(userAgent)) {
+          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+          window.location.replace("https://apps.apple.com/app/id1620312420");
+        }
       }, 2000);
     }
   };
