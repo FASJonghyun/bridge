@@ -196,11 +196,31 @@ function BridgePage({type,id}) {
   
     if (userAgent.match(/kakaotalk/i)) {
       // 카카오톡에서 앱 스킴으로 리디렉션
-      window.location.href = appScheme;
+      // window.location.href = appScheme;
+      if (/android/i.test(userAgent)) {
+        window.location.href = `fashionandstyle://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
+      } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+        window.location.href = appScheme;
+      } else {
+        window.location.href = externalUrl;
+      }
+      setTimeout(() => {
+        setShowModal(true);
+      }, 2000);
     } 
     else if (userAgent.match(/kakaostory/i)) {
       // 카카오스토리에서 앱 스킴으로 리디렉션
-      window.location.href = appScheme;
+      // window.location.href = appScheme;
+      if (/android/i.test(userAgent)) {
+        window.location.href = `fashionandstyle://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
+      } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+        window.location.href = appScheme;
+      } else {
+        window.location.href = externalUrl;
+      }
+      setTimeout(() => {
+        setShowModal(true);
+      }, 2000);
     }
     else if (userAgent.match(/threads/i) || document.referrer.includes('threads.net')) {
       // Threads에서 인스타그램과 동일한 로직 적용
@@ -217,7 +237,15 @@ function BridgePage({type,id}) {
     }
     else if (isFacebookInAppBrowser) {
       // 페이스북 인앱 브라우저 처리
-      window.location.href = appScheme;
+      // window.location.href = appScheme;
+      if (/android/i.test(userAgent)) {
+        window.location.href = `fashionandstyle://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
+      } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+        window.location.href = appScheme;
+      } else {
+        window.location.href = externalUrl;
+      }
+      
       setTimeout(() => {
         setShowModal(true);
         if (/android/i.test(userAgent)) {
@@ -255,14 +283,29 @@ function BridgePage({type,id}) {
     } 
     else if (/android/i.test(userAgent)) {
       // 일반 안드로이드 브라우저에서 처리
-      window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
+      // window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
+      window.location.href = `fashionandstyle://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
       setTimeout(() => {
         setShowModal(true);
       }, 2000);
     } 
     else if (/iphone|ipad|ipod/.test(userAgent) && !window.MSStream) {
       // 일반 iOS 브라우저에서 처리
-      window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
+      // window.location.href = `${externalUrl}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}`;
+      window.location.href = appScheme;
+
+      // if (/android/i.test(userAgent)) {
+      //   window.location.href = `fashionandstyle://${externalUrl.replace(/^https?:\/\//i, '')}/open?type=${encodeURIComponent(type)}&id=${encodeURIComponent(id)}#Intent;scheme=https;package=com.android.chrome;end`;
+      // } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+      //   window.location.href = appScheme;
+      // } else {
+      //   window.location.href = externalUrl;
+      // }
+      // setTimeout(() => {
+      //   setShowModal(true);
+      // }, 2000);
+
+
       setTimeout(() => {
         setShowModal(true);
       }, 2000);
