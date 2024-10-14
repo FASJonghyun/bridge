@@ -401,8 +401,8 @@ function BridgePage({type,id}) {
         <div>
           <div id="appLogoDiv">
             <img src="/img/fas_logo.svg" alt="패션&스타일 로고" id="logo"/>
+            <h2>패션 & 스타일</h2>
           </div>
-          <h1>패션 & 스타일</h1>
         </div>
         {/* `<div>
           <a id="moveToAPP" href="https://www.fashionandstyle.com/">앱에서 열기</a>
