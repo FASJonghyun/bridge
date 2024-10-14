@@ -192,12 +192,12 @@ function BridgePage({type,id}) {
       }
       setTimeout(() => {
         setShowModal(true);
-        if (/android/i.test(userAgent)) {
-          window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
-        } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
-          // window.location.replace("https://apps.apple.com/app/id1620312420");
-          window.location.replace(`https://apps.apple.com/app/id1620312420/?type=${type}&id=${id}`);
-        }
+        // if (/android/i.test(userAgent)) {
+        //   window.location.replace("https://play.google.com/store/apps/details?id=com.fas.android");
+        // } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+        //   // window.location.replace("https://apps.apple.com/app/id1620312420");
+        //   window.location.replace(`https://apps.apple.com/app/id1620312420/?type=${type}&id=${id}`);
+        // }
         // timeOutMethod();
       }, 2000);
     } 
@@ -259,15 +259,36 @@ function BridgePage({type,id}) {
     }
   };
 
-  const handleStoreRedirect = () => {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  // const handleStoreRedirect = () => {
+  //   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
+  //   if (/android/i.test(userAgent)) {
+  //     window.location.href = "https://play.google.com/store/apps/details?id=com.fas.android";
+  //   } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
+  //     window.location.href = "https://apps.apple.com/app/id1620312420";
+  //   }
+  // };
+
+  const handleStoreRedirect = async () => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const dataToCopy = "Your data here"; // 클립보드에 저장할 데이터
+
+    try {
+      // 클립보드에 데이터 저장
+      await navigator.clipboard.writeText(dataToCopy);
+      console.log('클립보드에 데이터가 저장되었습니다:', dataToCopy);
+    } catch (err) {
+      console.error('클립보드에 데이터를 저장하는 데 실패했습니다:', err);
+    }
+
+    // 플랫폼에 따라 앱스토어로 리디렉션
     if (/android/i.test(userAgent)) {
       window.location.href = "https://play.google.com/store/apps/details?id=com.fas.android";
     } else if (/iphone|ipad|ipod/i.test(userAgent) && !window.MSStream) {
       window.location.href = "https://apps.apple.com/app/id1620312420";
     }
   };
+
 
   return (
     <>
